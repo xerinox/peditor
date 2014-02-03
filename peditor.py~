@@ -3,11 +3,13 @@
 from gi.repository import Gtk, GtkSource, GObject
 from os.path import abspath, dirname, join
 
+WHERE_AM_I = abspath(dirname(__file__))
+
 class Gui(object):
 
 	def __init__(self):
 		self.builder = Gtk.Builder()
-		self.glade_file = join(abspath(dirname(__file__)), "UI.glade")
+		self.glade_file = join(WHERE_AM_I, "UI.glade")
 		GObject.type_register(GtkSource.View)
 		self.builder.add_from_file(self.glade_file)
 
